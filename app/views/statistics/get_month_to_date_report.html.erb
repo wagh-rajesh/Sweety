@@ -1,0 +1,19 @@
+<p>Showing Report from <%= @start_date %> to <%= @end_date%></p>
+<table> 
+        <tr>
+                <td> Maximum Level Recorded</td>
+                <td> : <%= @mtd_data.maximum(:level).to_i%></td>
+        </tr>
+        <tr>
+                <td> Minimum Level Recorded</td>
+                <td> : <%= @mtd_data.minimum(:level).to_i%></td>
+        </tr>
+        <tr>
+                <td> Average Level Recorded</td>
+                <td> : <%= @mtd_data.average(:level).to_f%></td>
+        </tr>
+        
+</table>          
+<br />     
+   
+<%= link_to('Home', :action => 'create')%>

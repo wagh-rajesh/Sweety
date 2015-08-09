@@ -1,0 +1,39 @@
+<% case @report_params[:from] %>
+        <%when "t_report" %>
+        <% action = "get_daily_report" %>
+         <% when "mtd_report" %>
+        <% action = "get_month_to_date_report" %>
+ <% end %>
+    
+<% if action.to_s == "get_daily_report" %>    
+<%= form_for :statistic, url: {action: action}, html: {method: "get"} do |f| %>
+<table id="user_data">  
+  <tr>            
+        <td> <p>Select Date : </p></td>
+        <td><%= date_select('statistic', 'date') %> <%= time_select('user','time')%></td>
+  </tr>
+  <tr><td></td></tr>    
+  <tr>
+        <td><%= submit_tag('Get Report') %></td>
+  </tr>             
+</table>
+<% end %>
+<% else %>
+<%= form_for :statistic, url: {action: action}, html: {method: "get"} do |f| %>
+<table id="user_data">  
+  <tr>            
+        <td> <p>Select Start Date : </p></td>
+        <td><%= date_select('statistic', 'start_date') %> <%= time_select('user','time')%></td>
+  </tr>
+  <tr>            
+        <td> <p>Select End Date : </p></td>
+        <td><%= date_select('statistic', 'end_date') %> <%= time_select('user','time')%></td>
+  </tr>
+  <tr><td></td></tr>    
+  <tr>
+        <td><%= submit_tag('Get Report') %></td>
+  </tr>             
+</table>
+<% end %>	     
+       
+<% end %> 

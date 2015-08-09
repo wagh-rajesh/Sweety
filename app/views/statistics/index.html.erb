@@ -1,0 +1,36 @@
+<p align="left">Hello "<%= session[:username]%>"</p>
+<p align="right"><%= link_to("Logout", user_logout_path )%></p>
+
+<h3> Create new statisitcs </h3>
+        <% if flash[:notice] %>
+                <p class="notice"><%= flash[:notice] %></p>
+        <% end %>
+        <% if flash[:error] %>
+                <p class="error"><%= flash[:error] %></p>
+        <% end %>
+<%= form_for :statistic, url: {action: "create"}, html: {method: "get"} do |f| %>
+<table id="user_data">
+  <tr>  
+        <td><%= f.label 'Current Glucose Level' %></td>
+        <td>: <%= f.text_field :level %></td>
+  </tr>                  
+  <tr><td></td></tr>    
+  <tr>
+        <td><%= submit_tag('Create') %><p>( Only four entries per day .. )</p></td>
+  </tr>
+</table>
+<% end %>
+    
+<table>
+        <th><p> Please enter the user name to generate required report : </p></th>
+        <tr>
+                <td><%= link_to( 'Daily Report', :action => 'view_report', :from => 't_report')%></td>
+        </tr>
+        <tr>
+                <td><%= link_to( 'Monthly Report', :action => 'get_monthly_report', :from => 'm_report')%></td>
+        </tr>
+        <tr>
+                <td><%= link_to( 'Month To Date Report', :action => 'view_report', :from => 'mtd_report')%></td>
+        </tr>
+</table>
+ <br /><br />

@@ -1,0 +1,19 @@
+<p>Showing report from start of this month </p>
+
+<table> 
+        <tr>
+                <td> Maximum Level Recorded</td>
+                <td> : <%= @monthly_data.maximum(:level).to_i%></td>
+        </tr>
+        <tr>
+                <td> Minimum Level Recorded</td>
+                <td> : <%= @monthly_data.minimum(:level).to_i%></td>
+        </tr>
+        <tr>
+                <td> Average Level Recorded</td>
+                <td> : <%= @monthly_data.average(:level).to_f%></td>
+        </tr>
+        
+</table>          
+<br />        
+<%= link_to('Home', :action => 'create')%>

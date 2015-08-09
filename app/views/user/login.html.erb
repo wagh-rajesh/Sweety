@@ -1,0 +1,19 @@
+<h1>Please Log In</h1>
+<%= flash[:notice] if flash[:notice]%><br\>
+<%= flash[:error] if flash[:error]%><br\>
+<%= form_for :user, url: {action: "show"}, html: {method: "get"} do |f| %>
+<table id="user_data">
+  <tr>
+  	<td><%= f.label 'User-Name' %></td>
+  	<td>: <%= f.text_field :username %></td>
+  </tr> 		 
+  <tr>
+  	<td><%= f.label 'Password'%> </td>
+	<td>: <%= f.text_field :password %></td>
+  </tr>
+  <tr><td></td></tr>	
+  <tr>
+  	<td><%= submit_tag('Login') %></td> 
+  </tr>
+</table>
+<% end %>
