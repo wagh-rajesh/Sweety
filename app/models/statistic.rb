@@ -16,7 +16,7 @@ class Statistic < ActiveRecord::Base
                     name: user})
   end
   
-  def self.get_month_to_date_report_data(user, str_date, end_date)
+  def self.get_month_to_date_report_data(user, str_date, end_date)   	
      self.where("created_at >= :start_date and created_at <= :end_date and name = :name",
                   { start_date: str_date, end_date: end_date, name: user})
   end

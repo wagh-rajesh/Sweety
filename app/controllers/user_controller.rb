@@ -4,11 +4,12 @@ class UserController < ApplicationController
   end
 
   def show
-    if params[:user].nil? || params[:user][:password] != "sweetyapp"
+    user_data = params[:user]
+    if user_data.nil? || user_data[:password] != user_data[:username]
       flash[:error] = "Login failed. Please try again .."
       redirect_to user_login_path
     else
-      session[:username] = params[:user][:username]
+      session[:username] = user_data[:username]
       redirect_to statistics_index_path    
     end    
   end
